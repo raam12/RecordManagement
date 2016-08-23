@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="class" content="">
+    <meta name="author" content="Mosaddek">
+    <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <link rel="shortcut icon" href="img/favicon.png">
+
+    <title>mHELP</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-reset.css" rel="stylesheet">
+    <!--external css-->
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+
+    <!--right slidebar-->
+    <link href="css/slidebars.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet" />
+    <link href="css/custom.css" rel="stylesheet"/>  
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+   </head>
+        <body onload="viewdata()">
+              <section id="container" class="">
+              <!--header start-->
+      <header class="header white-bg">
+         
+          <!--logo start-->
+          <a href="" class="logo" ><span>mHELP</span> DASHBOARD</a>
+          <!--logo end-->
+        
+          <div class="top-nav">
+               <div class="top-left-menu">
+  
+                    <button type="button" class="btn btn-info left55"><i class="fa fa-users"></i> Manage Users </button>
+					<button type="button" id="btn_click" onclick="gotocompany()" class="btn btn-info left55"><i class="fa fa-foursquare"></i> Manage Companies </button>
+					<!--<button type="button" class="btn btn-info left55"><i class="fa fa-cog"></i> Manage Configurations </button>
+                    <button type="button" class="btn btn-info left55"><i class="fa fa-sign-in"></i> Manage Registers </button>
+                    <button type="button" class="btn btn-info left55"><i class="fa fa-thumbs-o-up"></i> Manage Awards </button>-->
+                   
+                   <ul class="nav pull-right top-menu">
+                   <button type="button" class="btn btn-danger left55"><i class="fa fa-sign-out"></i> Logout </button>
+                </ul>                
+                  </div>              
+          </div>
+      </header>
+      <!--header end-->    
+        
+  </div>
+ 
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Create User</h4>
+      </div>
+      <div class="modal-body">
+        
+<form id="form1">
+  <div class="form-group">
+    <label for="firstname">First Name</label>
+    <input type="text" class="form-control" id="firstname">
+  </div>
+  <div class="form-group">
+    <label for="lastname">Last Name</label>
+    <input type="text" class="form-control" id="lastname">
+  </div>
+  <div class="form-group">
+    <label for="email">Company</label>
+    <select id="mySelectID" name="select" class="main-form">
+    <option value="">None Selected</option>
+</select>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="text" class="form-control" id="email">
+  </div>
+       <div class="form-group">
+    <label for="password">Password</label>
+    <input type="text" class="form-control" id="password">
+  </div>
+  <div class="form-group">
+    <label for="mobile">Mobile</label>
+    <input type="text" class="form-control" id="mobile">
+  </div>
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" class="form-control" id="title">
+  </div>
+  <div class="form-group">
+    <label for="profile">Profile</label>
+    <input type="text" class="form-control" id="profile">
+  </div>
+  <div class="form-group">
+    <label for="language">Language</label>
+    <input type="text" class="form-control" id="language">
+  </div>
+  <div class="form-group">
+    <label for="isactive">Is Active</label>
+    <input type="text" class="form-control" id="isactive">
+  </div>
+  <div class="form-group">
+    <label for="confirmcode">Confirm Code</label>
+    <input type="text" class="form-control" id="confirmcode">
+  </div>
+</form>
+          
+<div class="bgColor">
+<div class="targetLayerClass"  id="targetLayer">No Image</div>
+<div id="uploadFormLayer">
+<label>Upload Image File:</label><br/>
+<input id="userImage" type="file" class="inputFile" />
+<input type="button" onclick="imageUpload1()"  />
+
+</div>
+</div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" id="save" onclick="savedata()" data-dismiss="modal" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>    
+            
+            
+<div id="info"></div>
+      <br/>
+            <section id="main-content">
+                <br>
+                <br>
+                
+                <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-success"><i class="fa fa-user"></i> Create New User </button><br>
+ <br>
+             <div id="viewdata"></div>
+              
+          </section>
+      </section>
+            
+
+</div>
+</section>
+
+<script type="text/javascript">
+    
+     function savedata(){
+	
+	var firstname = $('#firstname').val();
+	var lastname = $('#lastname').val();
+	var photoname = userImage.files[0].name;
+	var email = $('#email').val();
+    var password = $('#password').val();
+	var mobile = $('#mobile').val();
+    var title = $('#title').val();
+    var profile = $('#profile').val();
+    var language = $('#language').val();
+    var isactive = $('#isactive').val();
+    var confirmcode = $('#confirmcode').val();
+        
+        var photoname1 = photoname.split(".");
+        photoname = photoname1[0];
+        
+    console.log(photoname);
+	
+	var datas="&firstname="+firstname+"&lastname="+lastname+"&photoname="+photoname+"&email="+email+"&password="+password+"&mobile="+mobile+"&title="+title+
+        "&profile="+profile+"&language="+language+"&isactive="+isactive+"&confirmcode="+confirmcode;
+      
+	$.ajax({
+	   type: "POST",
+	   url: "php/newdata.php",
+	   data: datas
+	}).done(function( data ) {
+	  $('#info').html(data);
+	  viewdata();
+	});
+    }
+    
+function imageUpload1()
+    {
+        console.log("in uploading....");
+        var myFormData = new FormData();
+        myFormData.append('userImage', userImage.files[0]);
+
+$.ajax({
+  url: 'php/upload.php',
+  type: 'POST',
+  processData: false, // important
+  contentType: false, // important
+  data: myFormData,
+  success: function(data)
+		    {
+                //debugger;
+			 $("#targetLayer").html(data);
+
+		    },
+		  	error: function() 
+	    	{
+	    	} 
+});
+    }
+    
+    
+    function imageUpload2(str)
+    {
+        // alert("iploading...");
+        //console.log("in uploading....");
+        // alert(str);
+        //alert(window['userImage'+str].files[0].name);
+        
+        var myFormData = new FormData();
+        myFormData.append('userImage', window['userImage'+str].files[0]);
+        var str1 =  window['userImage'+str].files[0].name;
+        alert (str1);
+         var photoname1 = str1.split(".");
+        photoname1 = photoname1[0];
+        document.getElementById("photoname"+str).value=photoname1;
+
+
+$.ajax({
+  url: 'php/upload.php',
+  type: 'POST',
+  processData: false, // important
+  contentType: false, // important
+  data: myFormData,
+  success: function(data)
+		    {
+                //debugger;
+			 $("#targetLayer"+str).html(data);
+
+		    },
+		  	error: function() 
+	    	{ 
+                
+	    	} 
+});
+        
+    }
+
+    
+    
+    function gotocompany()
+    {
+        window.location = 'company.html'; 
+    }
+    
+</script>
+    
+      <!--footer start-->
+     <!-- <footer class="site-footer">
+          <div class="text-center">
+              2015 &copy; MacAppStudio.
+              <a href="#" class="go-top">
+                  <i class="fa fa-angle-up"></i>
+              </a>
+          </div>
+      </footer>-->
+      <!--footer end-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+	<script src="functions.js"></script>
+	  <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="js/jquery.scrollTo.min.js"></script>
+    <script src="js/slidebars.min.js"></script>
+    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="js/respond.min.js" ></script>      
+    <!--common script for all pages-->
+    <script src="js/common-scripts.js"></script>
+
+	<script src="functions.js"></script>
+  
+</body>
+</html> 

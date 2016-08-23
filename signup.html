@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mosaddek">
+    <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <link rel="shortcut icon" href="img/favicon.png">
+
+    <title>FlatLab - Flat & Responsive Bootstrap Admin Template</title>
+	<!-- Bootstrap -->
+
+
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-reset.css" rel="stylesheet">
+    <!--external css-->
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+	<link href="css/custom.css" rel="stylesheet"/>  
+    
+	<link href="css/style-responsive.css" rel="stylesheet" />
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+	
+<script>
+	  $(function() {
+
+		$('#emailError').hide();
+		$('#passwordError').hide();
+
+	    $(".btn").click(function()
+	    {
+
+		$('#emailError').hide();
+		$('#passwordError').hide();
+		
+		var name = $("input#name").val();
+	    var email = $("input#userName").val();
+	    var password = $("input#password").val();
+	    var password1 = $("input#password1").val();
+
+	    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+
+		if(email=='')
+		{
+			 $('#emailError').show();
+			 return;
+        }
+
+        if(!re.test(email))
+        {
+       		 $('#emailError').show();
+       		 return;
+        }
+
+		if(password=='' || password!=password1)
+		{
+			 $('#passwordError').show();
+			 return;
+        }
+
+	    $.ajax({
+	    type: "POST",
+	    url: "php/signup.php",
+	    data: "name="+name+"&userName="+email+"&password="+password,
+	    success: function(data){
+	    var result = data;
+	    //alert(result);
+	    if(result=="success")
+	    {
+	    	window.location ='index.html';
+	    }
+	    else
+	    {
+			$('#loginError').show();
+	    }
+	  }
+	});
+
+	return false;
+	});
+	});
+</script>
+
+
+</head>
+
+
+  <body>
+      
+  	<div id="login-wrapper">
+		
+    <div class="container" id="login">
+	  	
+	
+      <form class="form-signin" role="form" action="index.html">
+        <h2 class="form-signin-heading">Register now</h2>
+        <div class="login-wrap">
+            <p>Enter your details below</p>
+            <input type="name" id="name" class="form-control" placeholder="name" autofocus>
+            <input type="email" id="userName" class="form-control" placeholder="Email address" required autofocus>
+             <input type="password" id="password" class="form-control" placeholder="Password" required>
+            <input type="password" id="password1" class="form-control" placeholder="Confirm Password" required>
+            <label class="checkbox">
+                <input type="checkbox" value="agree this condition"> I agree to the Terms & Conditions
+            </label>
+             <button class="btn btn-lg btn-primary btn-block" type="submit"> Sign UP</button>
+			
+            <div class="registration">
+                Already Registered.
+                <a class="" href="index.html">
+                    Login
+                </a>
+            </div>
+
+        </div>
+
+      </form>
+
+    </div>
+	
+</div>
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+   <script src="js/login.js"></script>
+
+  </body>
+</html>

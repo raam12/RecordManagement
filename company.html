@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="class" content="">
+    <meta name="author" content="Mosaddek">
+    <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <link rel="shortcut icon" href="img/favicon.png">
+
+    <title>mHELP</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-reset.css" rel="stylesheet">
+    <!--external css-->
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+
+    <!--right slidebar-->
+    <link href="css/slidebars.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet" />
+    <link href="css/custom.css" rel="stylesheet"/>  
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+   </head>
+        <body onload="viewcompanydata()">
+              <section id="container" class="">
+              <!--header start-->
+      <header class="header white-bg">
+         
+          <!--logo start-->
+          <a href="" class="logo" ><span>mHELP</span> DASHBOARD</a>
+          <!--logo end-->
+        
+          <div class="top-nav">
+               <div class="top-left-menu">
+  
+                    <button type="button" onclick="gotohome()" class="btn btn-info left55"><i class="fa fa-users"></i> Manage Users </button>
+					<button type="button" id="btn_click" onclick="company.html" class="btn btn-info left55"><i class="fa fa-foursquare"></i> Manage Company </button>
+					<!--<button type="button" class="btn btn-info left55"><i class="fa fa-cog"></i> Manage Configurations </button>
+                    <button type="button" class="btn btn-info left55"><i class="fa fa-sign-in"></i> Manage Registers </button>
+                    <button type="button" class="btn btn-info left55"><i class="fa fa-thumbs-o-up"></i> Manage Awards </button>-->
+                   
+                   <ul class="nav pull-right top-menu">
+                   <button type="button" class="btn btn-danger left55"><i class="fa fa-sign-out"></i> Logout </button>
+                </ul>                
+                  </div>              
+          </div>
+      </header>
+      <!--header end-->    
+        
+  </div>
+ 
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Create Company</h4>
+      </div>
+      <div class="modal-body">
+        
+<form id="form1">
+  <div class="form-group">
+    <label for="firstname">Company Name</label>
+    <input type="text" class="form-control" id="companyName">
+  </div>
+  <div class="form-group">
+    <label for="lastname">Location</label>
+    <input type="text" class="form-control" id="location">
+  </div>
+</form>
+          
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" id="save" onclick="savecompanydata()" data-dismiss="modal" class="btn btn-primary">Save Company</button>
+      </div>
+    </div>
+  </div>
+</div>    
+
+            
+<div id="info"></div>
+      <br/>
+            <section id="main-content">
+                <br>
+                <br>
+
+                <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-success"><i class="fa fa-user"></i> Create New Company </button><br>
+ <br>
+             <div id="viewdata"></div>
+              
+          </section>
+      </section>
+            
+
+</div>
+</section>
+
+<script type="text/javascript">
+    
+     function updatecompanydata(str){
+	
+	var id = str;
+	var companyName = $('#companyName'+str).val();
+	var location = $('#location'+str).val();
+	
+	var datas="&companyName="+companyName+"&location="+location;
+        
+	$.ajax({
+	   type: "POST",
+	   url: "php/updatecompanydata.php?id="+id,
+	   data: datas
+	}).done(function( data ) {
+	  $('#info').html(data);
+	  viewcompanydata();
+	});
+         
+         
+    }
+    
+     function deletecompanydata(str){
+	
+	var id = str;
+      
+	$.ajax({
+	   type: "GET",
+	   url: "php/deletecompanydata.php?id="+id
+	}).done(function( data ) {
+	  $('#info').html(data);
+	  viewcompanydata();
+	});
+    }
+    
+     function savecompanydata(){
+	
+	var companyName = $('#companyName').val();
+	var location = $('#location').val();
+
+	var datas="&companyName="+companyName+"&location="+location;
+      
+	$.ajax({
+	   type: "POST",
+	   url: "php/newcompanydata.php",
+	   data: datas
+	}).done(function( data ) {
+	  $('#info').html(data);
+	  viewcompanydata();
+	});
+    }
+    
+function imageUpload1()
+    {
+        console.log("in uploading....");
+        var myFormData = new FormData();
+        myFormData.append('userImage', userImage.files[0]);
+
+$.ajax({
+  url: 'php/upload.php',
+  type: 'POST',
+  processData: false, // important
+  contentType: false, // important
+  data: myFormData,
+  success: function(data)
+		    {
+                //debugger;
+			 $("#targetLayer").html(data);
+
+		    },
+		  	error: function() 
+	    	{
+	    	} 
+});
+    }
+    
+    
+    function imageUpload2(str)
+    {
+        alert("iploading...");
+        //console.log("in uploading....");
+        
+        alert(str);
+        alert(window['userImage'+str].files[0].name);
+        var myFormData = new FormData();
+        myFormData.append('userImage', window['userImage'+str].files[0]);
+        
+
+
+$.ajax({
+  url: 'php/upload.php',
+  type: 'POST',
+  processData: false, // important
+  contentType: false, // important
+  data: myFormData,
+  success: function(data)
+		    {
+                //debugger;
+			 $("#targetLayer"+str).html(data);
+
+		    },
+		  	error: function() 
+	    	{
+	    	} 
+});
+    }
+    
+    
+       function viewcompanydata()
+    {
+       $.ajax({
+	   type: "GET",
+	   url: "php/getcompanydata.php"
+      }).done(function( data ) {
+	  $('#viewdata').html(data);
+      });
+        
+        
+               $.ajax({
+	   type: "GET",
+	   url: "php/getcompanydatalist.php"
+      }).done(function( data ) {
+	  
+                   var jsonData = $.parseJSON(data);
+
+var $select = $('#mySelectID');
+$(jsonData).each(function (index, o) {    
+    var $option = $("<option/>").attr("value", o.id).text(o.companyName);
+    $select.append($option);
+});
+                   
+      });
+        
+    }
+
+    
+    function gotohome()
+    {
+        window.location = 'data1.html'; 
+    }
+    
+</script>
+    
+      <!--footer start-->
+     <!-- <footer class="site-footer">
+          <div class="text-center">
+              2015 &copy; MacAppStudio.
+              <a href="#" class="go-top">
+                  <i class="fa fa-angle-up"></i>
+              </a>
+          </div>
+      </footer>-->
+      <!--footer end-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+	<script src="functions.js"></script>
+	  <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="js/jquery.scrollTo.min.js"></script>
+    <script src="js/slidebars.min.js"></script>
+    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="js/respond.min.js" ></script>      
+    <!--common script for all pages-->
+    <script src="js/common-scripts.js"></script>
+
+	<script src="functions.js"></script>
+  
+</body>
+</html> 
