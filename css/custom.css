@@ -1,0 +1,246 @@
+img {
+    border-radius: 40px 40px 40px 40px;
+}
+
+body {
+font-family: Arial;
+font-size: 14px;
+}
+.bgColor {
+width: 440px;
+height:100px;
+background-color: #F9D735;
+}
+.bgColor label{
+font-weight: bold;
+color: #A0A0A0;
+}
+
+.targetLayerClass{
+float:left;
+width:100px;
+height:100px;
+text-align:center;
+line-height:100px;
+font-weight: bold;
+color: #C0C0C0;
+background-color: #F0E8E0;
+overflow:auto;
+}
+
+#uploadFormLayer{
+float:right;
+padding: 10px;
+}
+.btnSubmit {
+background-color: #3FA849;
+padding:4px;
+border: #3FA849 1px solid;
+color: #FFFFFF;
+}
+.inputFile {
+padding: 3px;
+background-color: #FFFFFF;
+}
+
+
+.login-bar{
+   padding-left: 100px;
+    padding-right: 100px;
+    margin-left: 0px;
+}
+
+.login-bar .open{
+   padding-left: 250px;
+    padding-right: 250px;
+    margin-left: 0px;
+}
+
+#main-content{
+
+    padding-top: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-left: 20px;
+    margin-right: 16px;
+}
+
+log-arrow-up {
+    right: 0px;
+}
+
+.top-menu {
+    margin-left: 0px;
+    padding: 0px 50px 10px;
+}
+
+a.logo {
+
+    padding: 2px 20px 10px 60px;
+}
+
+.top-left-menu {
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 0px;
+    padding-top: 8px;
+    padding-bottom: 10px;
+}
+
+
+.top-nav li.dropdown .dropdown-menu {
+
+    right: none;
+
+}
+
+.btn-primary, .btn-primary.disabled, .btn-primary[disabled], .btn-primary.disabled.active, .btn-primary.active[disabled] {
+    margin-bottom: 15px;
+}
+
+.form-signin .form-control {
+    position: relative;
+    margin-bottom: 15px;
+    height: auto;
+    padding: 10px;
+    box-sizing: border-box;
+   font-size: 13px;
+}
+
+.form-signin input[type="text"], .form-signin input[type="password"] {
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #EAEAEA;
+    box-shadow: none;
+    font-size: 13px;
+}
+
+#login-wrapper{
+background-image: url("../img/login_bgnd.png");
+}
+
+
+#login-wrapper{
+height: 800px;
+}
+
+.form-signin {
+   
+    box-shadow: 3px 3px 3px rgba(6, 8, 8, 0.21);
+}
+
+#signin-wrapper {
+   
+    max-width: 330px;
+    margin: 100px auto 0px;
+
+}
+
+#img-center {
+	margin-left: 20%;
+	margin-bottom: -45%;
+}
+
+#panel-even-height{
+height: 370px;
+}
+#panel-even-body-height{
+height: 339px;
+}
+
+
+header#expenses{
+text-align:center;
+}
+
+
+#height{
+height: 50px;
+}
+
+
+#headeralign{
+padding: 20px;
+}
+
+
+#doughnut{
+height: 400px !important;
+width: 534px !important;    
+
+}
+
+#hero-bar{
+ height:403px !important; 
+}
+
+
+#form{
+width: 100px;
+}
+
+.size{
+font-size: 20px;
+}
+
+
+#select{
+width: 370px;
+}
+
+
+#select1{
+width: 1500px;
+padding-left: 468px;
+}
+
+#wrapper1{
+height: 1000px;
+}
+
+.align1{
+padding-left: 300px;
+}
+
+#select2{
+width: 500px;
+}
+
+header#align{
+text-align:center;
+}
+
+
+
+#pane1{
+width:780px;
+}
+
+
+#form{
+width: 100px;
+}
+
+
+
+#receivable_height {
+    height: 170px;
+}
+
+#Revenue_Expenses{
+height: 474px;
+}
+.left
+{
+margin-left:70px;
+}
+.left111
+{
+margin-left:70px;
+}
+
+.site-footer {
+    background: #5B6E84 none repeat scroll 0% 0%;
+    color: #FFF;
+    padding-bottom: 0px;
+}
